@@ -1,0 +1,39 @@
+.preview {
+  width: 300px;
+  height: auto;
+  margin-bottom: 2rem;
+
+  &::after {
+    content: '';
+    width: 300px;
+    height: 1px;
+    background-color: #12121210;
+    display: block;
+    align-items: center;
+  }
+
+  img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: #fa5c5480;
+    font-size: 1rem;
+  }
+  
+  h3 {
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .author {
+    color: #12121230;
+    font-size: 1rem;
+    margin: 1rem 0;
+
+  }
+}
