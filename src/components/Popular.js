@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RecipePreview from "./RecipePreview";
+import "./Popular.scss";
 const axios = require("axios");
 
 const Popular = () => {
@@ -8,7 +9,7 @@ const Popular = () => {
   useEffect(() => {
     getPopular();
   }, []);
-  
+
   const getPopular = async () => {
     const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=3`;
     const API = await axios
@@ -27,7 +28,6 @@ const Popular = () => {
 
   return (
     <div className="popular">
-      <div className="title">Popular Dishes</div>
       <div className="preview-container">{popularEl}</div>
     </div>
   );
