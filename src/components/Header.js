@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -17,7 +17,7 @@ const Header = () => {
           exact
           to="/search"
         >
-          <AiOutlineSearch />
+          <FaSearch className="search" />
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
