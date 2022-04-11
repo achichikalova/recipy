@@ -7,56 +7,49 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="logo">
-        <NavLink exact to="/">
+        <NavLink to="/">
           Recipy
         </NavLink>
       </div>
       <nav className="nav">
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/search"
         >
           <FaSearch className="search" />
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/all"
         >
           All
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/breakfast"
         >
           Breakfast
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/lunch"
         >
           Lunch
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/dinner"
         >
           Dinner
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/dessert"
         >
           Dessert
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          exact
           to="/cuisine"
         >
           Cuisine
