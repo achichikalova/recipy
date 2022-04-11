@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import RecipePreview from "./RecipePreview";
+const axios = require("axios");
 
 const Popular = () => {
-  return (
-    <div>Popular</div>
-  )
-}
+  const [popular, setPopular] = useState([]);
 
-export default Popular
+  useEffect(() => {
+    getPopular();
+  }, []);
+  
+  const getPopular = async () => {
+    const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=3`;
+    const API = await axios
+      .get(URL)
+      .then((res) => {
+        setPopular(res.data.recipes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const popularEl = popular.map((recipe) => {
+    return <RecipePreview key={recipe.id} recipe={recipe} />;
+  });
+
+  return (
+    <div className="popular">
+      <div className="title">Popular Dishes</div>
+      <div className="preview-container">{popularEl}</div>
+    </div>
+  );
+};
+
+export default Popular;
