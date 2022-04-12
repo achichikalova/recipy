@@ -1,7 +1,8 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./Cuisine.scss";
+import axios from "axios";
 import { useParams } from "react-router-dom";
-import RecipePreview from "../components/RecipePreview";
+import Category from "../components/Category";
 
 const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
@@ -27,14 +28,19 @@ const Cuisine = () => {
 
   const cuisine = cuisines.map((cuisine) => {
     return (
-      <div key={cuisine.id}>
+      <div className="cuisine" key={cuisine.id}>
         <img src={cuisine.image} alt={cuisine.title} />
         <h4>{cuisine.title}</h4>
       </div>
     );
   });
 
-  return <div>{cuisine}</div>;
+  return (
+    <div>
+      <Category />
+      <div className="cuisine-container">{cuisine}</div>);
+    </div>
+  );
 };
 
 export default Cuisine;

@@ -1,0 +1,25 @@
+.cuisine-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  .cuisine {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+
+    img {
+      // width: clamp(15vw, 20vw, 30vw);
+      // height: clamp(10vw, 13vw, 15vw);
+      // object-fit: none;
+      display: block;
+      max-width: 15vw;
+      max-height: 10vw;
+      object-fit: none;
+      object-position: center;
+    }
+  }
+}
