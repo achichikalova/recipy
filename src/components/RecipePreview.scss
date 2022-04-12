@@ -1,10 +1,10 @@
 .preview {
-  width: 15vw;
+  width: clamp(15vw, 20vw, 30vw);
   height: auto;
   margin-bottom: 2rem;
 
   &::after {
-    content: '';
+    content: "";
     width: auto;
     height: 1px;
     background-color: #12121210;
@@ -13,11 +13,7 @@
   }
 
   img {
-    width: 350px;
-    height: 200px;
-    object-fit: none;
-    border-radius: 5px;
-    object-position: center;
+    display: none;
   }
 
   h2 {
@@ -25,7 +21,7 @@
     color: #fa5c5480;
     font-size: 1rem;
   }
-  
+
   h3 {
     margin: 0;
     font-weight: 400;
@@ -35,6 +31,5 @@
     color: #12121230;
     font-size: 1rem;
     margin: 1rem 0;
-
   }
 }

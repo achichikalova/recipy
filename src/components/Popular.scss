@@ -5,7 +5,19 @@
   align-items: flex-end;
 
   .preview-container {
-    padding-right: 4rem;
+    width: clamp(15vw, 20vw, 30vw);
+
+    .preview:first-of-type {
+      img {
+        display: block;
+        max-width: clamp(15vw, 20vw, 30vw);
+        max-height: 20vw;
+        object-fit: none;
+        border-radius: 5px;
+        object-position: center;
+
+      }
+    }
 
   }
 }
