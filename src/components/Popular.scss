@@ -1,11 +1,11 @@
 .popular {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
-  padding: 2rem 4rem;
 
   .preview-container {
     padding-right: 4rem;
+
   }
 }

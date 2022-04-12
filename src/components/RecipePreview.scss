@@ -1,5 +1,5 @@
 .preview {
-  width: 20vw;
+  width: 15vw;
   height: auto;
   margin-bottom: 2rem;
 
@@ -13,10 +13,11 @@
   }
 
   img {
-    width: 20vw;
-    height: 25vh;
-    object-fit: cover;
+    width: 350px;
+    height: 200px;
+    object-fit: none;
     border-radius: 5px;
+    object-position: center;
   }
 
   h2 {
