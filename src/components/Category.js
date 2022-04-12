@@ -1,42 +1,73 @@
 import React from "react";
+import "./Category.scss";
 import { NavLink } from "react-router-dom";
 import { FaPizzaSlice } from "react-icons/fa";
-import { GiNoodles, GiHamburger, GiSushis, GiTacos, GiChiliPepper } from "react-icons/gi";
+import {
+  GiNoodles,
+  GiHamburger,
+  GiSushis,
+  GiTacos,
+  GiChiliPepper,
+} from "react-icons/gi";
 import { MdOutlineRamenDining } from "react-icons/md";
-import {BiDish} from 'react-icons/bi'
+import { BiDish } from "react-icons/bi";
 
 const Category = () => {
   return (
     <div className="category">
-      <NavLink to={"/cuisine/italian"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/italian"}
+      >
         <FaPizzaSlice />
         <h3>Italian</h3>
       </NavLink>
-      <NavLink to={"/cuisine/thai"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/thai"}
+      >
         <GiNoodles />
         <h3>Thai</h3>
       </NavLink>
-      <NavLink to={"/cuisine/american"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/american"}
+      >
         <GiHamburger />
         <h3>American</h3>
       </NavLink>
-      <NavLink to={"/cuisine/japanese"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/japanese"}
+      >
         <GiSushis />
         <h3>Japanese</h3>
       </NavLink>
-      <NavLink to={"/cuisine/mexican"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/mexican"}
+      >
         <GiTacos />
         <h3>Mexican</h3>
       </NavLink>
-      <NavLink to={"/cuisine/korean"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/korean"}
+      >
         <MdOutlineRamenDining />
         <h3>Korean</h3>
       </NavLink>
-      <NavLink to={"/cuisine/european"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/european"}
+      >
         <BiDish />
         <h3>European</h3>
       </NavLink>
-      <NavLink to={"/cuisine/indian"}>
+      <NavLink
+        className={(navData) => (navData.isActive ? "active link" : "link")}
+        to={"/cuisine/indian"}
+      >
         <GiChiliPepper />
         <h3>Indian</h3>
       </NavLink>

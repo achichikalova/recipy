@@ -1,0 +1,35 @@
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    background: linear-gradient(35deg, #494949, #313131);
+    margin-right: 2rem;
+    color: #fff;
+    cursor: pointer;
+    transform: scale(0.8);
+
+    &.active {
+      background: linear-gradient(to left, #fa5c54, #b13d37);
+    }
+
+    svg {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+  }
+}
