@@ -48,12 +48,6 @@ const Header = () => {
         >
           Dessert
         </NavLink>
-        <NavLink
-          className={(navData) => (navData.isActive ? "active" : "link")}
-          to="/cuisine"
-        >
-          Cuisine
-        </NavLink>
       </nav>
     </div>
   );

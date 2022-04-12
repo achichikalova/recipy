@@ -22,7 +22,7 @@ function App() {
           <Route path="/lunch" element={<Lunch />} />
           <Route path="/dinner" element={<Dinner />} />
           <Route path="/dessert" element={<Dessert />} />
-          <Route path="/cuisine" element={<Cuisine />} />
+          <Route path="/cuisine/:type" element={<Cuisine />} />
         </Routes>
       </div>
     </BrowserRouter>
