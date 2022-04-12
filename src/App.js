@@ -8,6 +8,7 @@ import Lunch from "./pages/Lunch";
 import Dinner from "./pages/Dinner";
 import Dessert from "./pages/Dessert";
 import Cuisine from "./pages/Cuisine";
+import All from "./pages/All";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/all" element={<Home />} />
+          <Route path="/all" element={<All />} />
           <Route path="/breakfast" element={<Breakfast />} />
           <Route path="/lunch" element={<Lunch />} />
           <Route path="/dinner" element={<Dinner />} />
