@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem auto;
+  margin: 1rem auto;
 
   .link {
     display: flex;
@@ -18,9 +18,18 @@
     color: #fff;
     cursor: pointer;
     transform: scale(0.8);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(0.9);
+    }
 
     &.active {
-      background: linear-gradient(to left, #fa5c54, #b13d37);
+      background: linear-gradient(to left, #ff9800, #ff5722);
+
+      h3 {
+        font-weight: bold;
+      }
     }
 
     svg {
