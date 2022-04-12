@@ -1,0 +1,30 @@
+.banner {
+  width: 50vw;
+  height: auto;
+
+  img {
+    width: 40vw;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: #fa5c5480;
+    font-size: 2rem;
+  }
+  
+  h3 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .author {
+    color: #12121230;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+
+  }
+}
