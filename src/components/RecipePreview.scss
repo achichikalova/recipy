@@ -1,11 +1,11 @@
 .preview {
-  width: 300px;
+  width: 20vw;
   height: auto;
   margin-bottom: 2rem;
 
   &::after {
     content: '';
-    width: 300px;
+    width: auto;
     height: 1px;
     background-color: #12121210;
     display: block;
@@ -13,8 +13,8 @@
   }
 
   img {
-    width: 300px;
-    height: 200px;
+    width: 20vw;
+    height: 25vh;
     object-fit: cover;
     border-radius: 5px;
   }
