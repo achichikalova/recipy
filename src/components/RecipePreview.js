@@ -1,7 +1,7 @@
 import React from "react";
 import "./RecipePreview.scss";
 
-const RecipePreview = ({ recipe, big }) => {
+const RecipePreview = ({ recipe }) => {
   return (
     <div className="preview">
       <img src={recipe?.image} alt="recipe.title" />
