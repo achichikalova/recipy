@@ -1,14 +1,15 @@
-import React from 'react'
-import Banner from '../components/Banner'
-import Popular from '../components/Popular'
+import React from "react";
+import Banner from "../components/Banner";
+import Popular from "../components/Popular";
+import "./Home.scss";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       <Banner />
       <Popular />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
