@@ -2,6 +2,9 @@
   width: clamp(15vw, 20vw, 30vw);
   height: auto;
   margin: 2rem;
+  text-decoration: none;
+  color: #121212;
+  cursor: pointer;
 
   &::after {
     content: "";
