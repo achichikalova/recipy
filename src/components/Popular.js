@@ -30,7 +30,7 @@ const Popular = () => {
   }
 
   const popularEl = popular.map((recipe) => {
-    return <RecipePreview key={recipe?.id} recipe={recipe} />;
+    return <RecipePreview key={recipe.id} recipe={recipe} />;
   });
 
   return (
