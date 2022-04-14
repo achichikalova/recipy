@@ -9,7 +9,7 @@ import RecipePreview from "../components/RecipePreview";
 const Search = () => {
   const [input, setInput] = useState("");
   const [searchedRecipes, setSearchedRecipes] = useState([]);
-  console.log(searchedRecipes);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,13 +18,18 @@ const Search = () => {
   };
 
   const getSearched = async (query) => {
+    console.log(query);
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=3&query=${query}`;
 
     await axios
       .get(URL)
       .then((res) => {
-        console.log(res.data.results)
-        setSearchedRecipes(res.data.results);
+        if (res.data.totalResults > 0) {
+          setSearchedRecipes(res.data.results);
+          setError("");
+        } else {
+          setError("Nothing was found, try again...");
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -32,12 +37,7 @@ const Search = () => {
   };
 
   const searchedRecipe = searchedRecipes.map((recipe) => {
-    console.log(recipe)
-    if (recipe.id) {
-      return <RecipePreview key={recipe.id} recipe={recipe} />;
-    } else {
-      return <h2>Nothing was found, try again...</h2>;
-    }
+    return <RecipePreview key={recipe.id} recipe={recipe} />;
   });
 
   return (
@@ -54,6 +54,7 @@ const Search = () => {
         <MdClear className="cancel-icon" />
       </form>
       <div className="recipe-container">{searchedRecipe}</div>
+      {error && <h2>{error}</h2>}
     </div>
   );
 };
