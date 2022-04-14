@@ -9,6 +9,7 @@ import Dinner from "./pages/Dinner";
 import Dessert from "./pages/Dessert";
 import Cuisine from "./pages/Cuisine";
 import All from "./pages/All";
+import Recipe from "./pages/Recipe";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dinner" element={<Dinner />} />
           <Route path="/dessert" element={<Dessert />} />
           <Route path="/cuisine/:type" element={<Cuisine />} />
+          <Route path="/recipe/:id" element={<Recipe />} />
         </Routes>
       </div>
     </BrowserRouter>
