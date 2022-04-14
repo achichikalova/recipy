@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Category from "../components/Category";
 import "./Search.scss";
 import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import axios from "axios";
+import RecipePreview from "../components/RecipePreview";
 
 const Search = () => {
   const [input, setInput] = useState("");
@@ -17,17 +18,27 @@ const Search = () => {
   };
 
   const getSearched = async (query) => {
-    const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=10&query=${query}`;
+    const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=3&query=${query}`;
 
     await axios
       .get(URL)
       .then((res) => {
-        setSearchedRecipes(res.data.recipes);
+        console.log(res.data.results)
+        setSearchedRecipes(res.data.results);
       })
       .catch((err) => {
         console.error(err);
       });
   };
+
+  const searchedRecipe = searchedRecipes.map((recipe) => {
+    console.log(recipe)
+    if (recipe.id) {
+      return <RecipePreview key={recipe.id} recipe={recipe} />;
+    } else {
+      return <h2>Nothing was found, try again...</h2>;
+    }
+  });
 
   return (
     <div className="search">
@@ -42,6 +53,7 @@ const Search = () => {
         />
         <MdClear className="cancel-icon" />
       </form>
+      <div className="recipe-container">{searchedRecipe}</div>
     </div>
   );
 };
