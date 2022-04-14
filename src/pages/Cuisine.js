@@ -3,6 +3,7 @@ import "./Cuisine.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Category from "../components/Category";
+import RecipePreview from "../components/RecipePreview";
 
 const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
@@ -27,12 +28,7 @@ const Cuisine = () => {
   };
 
   const cuisine = cuisines.map((cuisine) => {
-    return (
-      <div className="cuisine" key={cuisine.id}>
-        <img src={cuisine.image} alt={cuisine.title} />
-        <h4>{cuisine.title}</h4>
-      </div>
-    );
+    return <RecipePreview key={cuisine.id} recipe={cuisine} />;
   });
 
   return (
