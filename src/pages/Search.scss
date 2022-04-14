@@ -38,4 +38,9 @@
       padding-right: 1rem;
     }
   }
+
+  .recipe-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

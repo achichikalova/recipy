@@ -1,7 +1,7 @@
 .preview {
   width: clamp(15vw, 20vw, 30vw);
   height: auto;
-  margin-bottom: 2rem;
+  margin: 2rem;
 
   &::after {
     content: "";
@@ -13,7 +13,12 @@
   }
 
   img {
-    display: none;
+    display: block;
+    max-width: clamp(15vw, 20vw, 30vw);
+    max-height: 20vw;
+    object-fit: none;
+    border-radius: 5px;
+    object-position: center;
   }
 
   h2 {
