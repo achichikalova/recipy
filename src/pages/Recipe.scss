@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #8b929c;
+    width: 100%;
 
     .meta {
       display: flex;
@@ -17,6 +18,30 @@
       justify-content: center;
       align-items: center;
       margin-right: 2rem;
+    }
+  }
+
+  .recipe-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .image {
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .info {
+      margin-left: 2rem;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+
+      ul {
+        list-style: none;
+      }
     }
   }
 }
