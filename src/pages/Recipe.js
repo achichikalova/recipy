@@ -42,15 +42,15 @@ const Recipe = () => {
       <div className="recipe-meta">
         <div className="meta">
           <AiFillLike />
-          <h3>{recipeInfo?.aggregateLikes}</h3>
+          <h3>{recipeInfo?.aggregateLikes} likes</h3>
         </div>
         <div className="meta">
           <FaUserTimes />
-          <h3>{recipeInfo?.servings}</h3>
+          <h3>{recipeInfo?.servings} servings</h3>
         </div>
         <div className="meta">
           <WiTime5 />
-          <h3>{recipeInfo?.readyInMinutes} min</h3>
+          <h3>~{recipeInfo?.readyInMinutes} min</h3>
         </div>
       </div>
       <div className="recipe-info">
