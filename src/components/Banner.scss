@@ -1,12 +1,12 @@
 .banner {
-  width: 50vw;
-  height: auto;
+  width: 40vw;
   text-decoration: none;
   color: #121212;
+  // margin-left: 1rem;
 
   img {
     width: 40vw;
-    height: auto;
+    // height: 60vh;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -16,7 +16,7 @@
     color: #ff5722b8;
     font-size: 2rem;
   }
-  
+
   h3 {
     margin: 0;
     font-weight: 400;
@@ -27,6 +27,5 @@
     color: #12121230;
     font-size: 1.2rem;
     margin: 1rem 0;
-
   }
 }
