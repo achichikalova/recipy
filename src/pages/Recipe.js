@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 import { FaUserTimes } from "react-icons/fa";
 import { WiTime5 } from "react-icons/wi";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 const Recipe = () => {
   const [recipeInfo, setRecipeInfo] = useState({});
@@ -58,20 +60,25 @@ const Recipe = () => {
             {recipeInfo?.title} By {recipeInfo?.sourceName}
           </p>
         </div>
-        <div className="summary">
-          <button>Summary</button>
-          <p dangerouslySetInnerHTML={{ __html: recipeInfo.summary }}></p>
-        </div>
-        <div className="ingredients">
-          <button>Ingredients</button>
-          <ul>{ingredient}</ul>
-        </div>
-        <div className="instructions">
-          <button>Instructions</button>
-          {recipeInfo.instructions}
-        </div>
-
-        <div className="directions">{/* <ul>{directions}</ul> */}</div>
+        <Tabs className="tabs">
+          <TabList>
+            <Tab>Summary</Tab>
+            <Tab>Ingredients</Tab>
+            <Tab>Instructions</Tab>
+          </TabList>
+          <TabPanel>
+            <p
+              className="summary"
+              dangerouslySetInnerHTML={{ __html: recipeInfo.summary }}
+            ></p>
+          </TabPanel>
+          <TabPanel>
+            <ul className="ingredients">{ingredient}</ul>
+          </TabPanel>
+          <TabPanel>
+            <p className="instructions">{recipeInfo.instructions}</p>
+          </TabPanel>
+        </Tabs>
       </div>
     </div>
   );
