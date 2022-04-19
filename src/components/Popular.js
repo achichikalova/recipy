@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import RecipePreview from "./RecipePreview";
 import "./Popular.scss";
+import { Link } from "react-router-dom";
 const axios = require("axios");
 
 const Popular = () => {
@@ -27,17 +27,22 @@ const Popular = () => {
           console.error(error);
         });
     }
-  }
+  };
 
   const popularEl = popular.map((recipe) => {
-    return <RecipePreview key={recipe.id} recipe={recipe} />;
+    return (
+      <Link to={`/recipe/${recipe?.id}`} className="card">
+        {recipe?.image && <img src={recipe?.image} alt="recipe.title" />}
+        {recipe?.dishTypes && <h2>{recipe?.dishTypes[0]}</h2>}
+        {recipe?.title && <h3>{recipe?.title}</h3>}
+        {recipe?.sourceName && (
+          <p className="author">By {recipe?.sourceName}</p>
+        )}
+      </Link>
+    );
   });
 
-  return (
-    <div className="popular">
-      <div className="preview-container">{popularEl}</div>
-    </div>
-  );
+  return <div className="popular">{popularEl}</div>;
 };
 
 export default Popular;
