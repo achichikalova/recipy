@@ -19,7 +19,6 @@ const Recipe = () => {
     await axios
       .get(URL)
       .then((res) => {
-        console.log(res.data);
         setRecipeInfo(res.data);
         setIngredients(res.data.extendedIngredients);
       })
@@ -57,7 +56,8 @@ const Recipe = () => {
         <div className="image">
           <img src={recipeInfo?.image} alt={recipeInfo?.title} />
           <p>
-            {recipeInfo?.title} By {recipeInfo?.sourceName}
+            {recipeInfo?.title}{" "}
+            {recipeInfo?.sourceName && <span>By {recipeInfo?.sourceName}</span>}
           </p>
         </div>
         <Tabs className="tabs">

@@ -18,7 +18,6 @@ const Search = () => {
   };
 
   const getSearched = async (query) => {
-    console.log(query);
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&number=3&query=${query}`;
 
     await axios
