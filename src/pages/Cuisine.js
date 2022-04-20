@@ -7,7 +7,6 @@ import RecipePreview from "../components/RecipePreview";
 
 const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
-  console.log(cuisines);
   let params = useParams();
 
   useEffect(() => {

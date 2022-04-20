@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Category from "../components/Category";
 import "./Search.scss";
 import { FaSearch } from "react-icons/fa";
