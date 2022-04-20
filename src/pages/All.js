@@ -1,12 +1,45 @@
-import React from 'react'
-import Category from '../components/Category'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Category from "../components/Category";
+import RecipePreview from "../components/RecipePreview";
+import "./All.scss";
 
 const All = () => {
-  return (
-    <div>
-      <Category />
-    </div>
-  )
-}
+  const [all, setAll] = useState([]);
 
-export default All
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  const getAll = async () => {
+    const checkAll = localStorage.getItem("all");
+
+    if (checkAll) {
+      setAll(JSON.parse(checkAll));
+    } else {
+      const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`;
+      await axios
+        .get(URL)
+        .then((res) => {
+          localStorage.setItem("all", JSON.stringify(res.data.recipes));
+          setAll(res.data.recipes);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
+
+  const allRecipe = all.map((recipe) => {
+    return <RecipePreview key={recipe.id} recipe={recipe} />;
+  });
+
+  return (
+    <div className="all-recipe-container">
+      <Category />
+      <div className="all-recipe">{allRecipe}</div>
+    </div>
+  );
+};
+
+export default All;
