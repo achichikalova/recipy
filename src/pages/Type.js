@@ -14,7 +14,7 @@ const Type = () => {
   }, [params.type]);
 
   const getRecipes = async (type) => {
-    const checkType = localStorage.getItem(`${params.type}`);
+    const checkType = localStorage.getItem(`${type}`);
 
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&type=${type}&number=9`;
 
