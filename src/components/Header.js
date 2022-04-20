@@ -7,9 +7,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <div className="logo">
-        <NavLink to="/">
-          Recipy
-        </NavLink>
+        <NavLink to="/">Recipy</NavLink>
       </div>
       <nav className="nav">
         <NavLink
@@ -38,9 +36,9 @@ const Header = () => {
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
-          to="/dinner"
+          to="/appetizer"
         >
-          Dinner
+          Appetizer
         </NavLink>
         <NavLink
           className={(navData) => (navData.isActive ? "active" : "link")}
