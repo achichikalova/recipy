@@ -50,7 +50,7 @@ const Recipe = () => {
         </div>
         <div className="meta">
           <WiTime5 />
-          <h3>~{recipeInfo?.readyInMinutes} min</h3>
+          <h3>~ {recipeInfo?.readyInMinutes} min</h3>
         </div>
       </div>
       <div className="recipe-info">
@@ -76,7 +76,10 @@ const Recipe = () => {
             <ul className="ingredients">{ingredient}</ul>
           </TabPanel>
           <TabPanel>
-            <p className="instructions">{recipeInfo.instructions}</p>
+            <p
+              className="instructions"
+              dangerouslySetInnerHTML={{ __html: recipeInfo.instructions }}
+            ></p>
           </TabPanel>
         </Tabs>
       </div>
