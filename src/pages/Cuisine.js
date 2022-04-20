@@ -14,16 +14,23 @@ const Cuisine = () => {
   }, [params.type]);
 
   const getCuisine = async (type) => {
+    const checkCuisine = localStorage.getItem(`${type}`);
+
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`;
 
-    await axios
-      .get(URL)
-      .then((res) => {
-        setCuisines(res.data.results);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (checkCuisine) {
+      setCuisines(JSON.parse(checkCuisine));
+    } else {
+      await axios
+        .get(URL)
+        .then((res) => {
+          localStorage.setItem(`${type}`, JSON.stringify(res.data.results));
+          setCuisines(res.data.results);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   };
 
   const cuisine = cuisines.map((cuisine) => {
