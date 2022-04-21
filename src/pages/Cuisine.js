@@ -16,7 +16,7 @@ const Cuisine = () => {
   const getCuisine = async (type) => {
     const checkCuisine = localStorage.getItem(`${type}`);
 
-    const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`;
+    const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}&number=8`;
 
     if (checkCuisine) {
       setCuisines(JSON.parse(checkCuisine));
