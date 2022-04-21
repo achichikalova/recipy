@@ -32,13 +32,26 @@
     .link {
       text-decoration: none;
       color: #12121260;
-
     }
 
     .active {
       text-decoration: none;
       color: #ff5722;
     }
+  }
 
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    height: 100px;
+
+    .logo a {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .nav {
+      justify-content: space-between;
+      width: 90vw;
+    }
   }
 }

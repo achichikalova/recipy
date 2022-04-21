@@ -43,4 +43,12 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  @media screen and (max-width: 450px) {
+    width: 100%;
+
+    .input-wrap {
+      width: 80vw;
+    }
+  }
 }

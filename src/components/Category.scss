@@ -45,4 +45,29 @@
       font-weight: 400;
     }
   }
+
+  @media screen and (max-width: 1080px) {
+    .link {
+      margin-right: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 80vw;
+    flex-wrap: wrap;
+
+    .link {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    flex-wrap: wrap;
+    width: 90vw;
+
+    .link {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
 }

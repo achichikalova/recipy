@@ -6,7 +6,6 @@
 
   img {
     width: 40vw;
-    // height: 60vh;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -27,5 +26,17 @@
     color: #12121230;
     font-size: 1.2rem;
     margin: 1rem 0;
+  }
+
+  @media screen and (max-width: 1080px) {
+    width: 80vw;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid #ff5722b8;
+    padding-bottom: 2rem;
+
+    img {
+      width: 80vw;
+    }
   }
 }
