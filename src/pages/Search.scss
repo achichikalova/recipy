@@ -44,11 +44,26 @@
     flex-wrap: wrap;
   }
 
+  .error {
+    max-width: 80vw;
+    color: #ff5722;
+
+    span {
+      font-style: italic;
+      color: #000;
+    }
+  }
+
   @media screen and (max-width: 450px) {
     width: 100%;
 
     .input-wrap {
       width: 80vw;
+    }
+
+    .recipe-container {
+      justify-content: center;
+      align-items: center;
     }
   }
 }
