@@ -47,6 +47,12 @@
       justify-items: center;
       align-items: center;
       margin-top: 2rem;
+
+      @media screen and (max-width: 1080px) {
+        img {
+          width: 90vw;
+        }
+      }
     }
 
     .tabs {
@@ -59,10 +65,12 @@
         font-size: 18px;
         word-wrap: break-word;
         line-height: 1.5rem;
+        width: 40vw;
       }
 
       .ingredients {
         list-style: circle;
+        width: 40vw;
 
         li {
           margin-top: 1rem;
@@ -74,7 +82,26 @@
         font-size: 18px;
         word-wrap: break-word;
         line-height: 1.5rem;
+        width: 40vw;
+      }
+
+      @media screen and (max-width: 1080px) {
+        .summary,
+        .ingredients,
+        .instructions {
+          width: 80vw;
+        }
       }
     }
+
+    @media screen and (max-width: 1080px) {
+      flex-direction: column;
+      width: 80vw;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  @media screen and (max-width: 1080px) {
+    width: 80vw;
   }
 }
