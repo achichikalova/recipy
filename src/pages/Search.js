@@ -5,6 +5,7 @@ import { FaSearch } from "react-icons/fa";
 import { MdClear } from "react-icons/md";
 import axios from "axios";
 import RecipePreview from "../components/RecipePreview";
+import { motion } from "framer-motion";
 
 const Search = () => {
   const [input, setInput] = useState("");
@@ -27,7 +28,10 @@ const Search = () => {
           setSearchedRecipes(res.data.results);
           setError("");
         } else {
-          setError("Nothing was found, try again...");
+          setError(
+            `Nothing was found for your search - <span>${input}</span>, try again...`
+          );
+          setSearchedRecipes([]);
         }
       })
       .catch((err) => {
@@ -40,7 +44,12 @@ const Search = () => {
   });
 
   return (
-    <div className="search">
+    <motion.div
+      className="search"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.1 } }}
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+    >
       <Category />
       <form onSubmit={handleSubmit} className="input-wrap">
         <FaSearch className="search-icon" />
@@ -52,9 +61,18 @@ const Search = () => {
         />
         <MdClear className="cancel-icon" />
       </form>
-      <div className="recipe-container">{searchedRecipe}</div>
-      {error && <h2>{error}</h2>}
-    </div>
+      <motion.div
+        className="recipe-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0, transition: { duration: 0.1 } }}
+      >
+        {searchedRecipe}
+      </motion.div>
+      {error && (
+        <h2 className="error" dangerouslySetInnerHTML={{ __html: error }}></h2>
+      )}
+    </motion.div>
   );
 };
 
