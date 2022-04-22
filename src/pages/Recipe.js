@@ -7,6 +7,7 @@ import { FaUserTimes } from "react-icons/fa";
 import { WiTime5 } from "react-icons/wi";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { motion } from "framer-motion";
 
 const Recipe = () => {
   const [recipeInfo, setRecipeInfo] = useState({});
@@ -36,7 +37,12 @@ const Recipe = () => {
   });
 
   return (
-    <div className="recipe-info-container">
+    <motion.div
+      className="recipe-info-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+    >
       <h1>{recipeInfo?.title}</h1>
       <div className="recipe-meta">
         <div className="meta">
@@ -67,23 +73,36 @@ const Recipe = () => {
             <Tab>Instructions</Tab>
           </TabList>
           <TabPanel>
-            <p
+            <motion.p
               className="summary"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
               dangerouslySetInnerHTML={{ __html: recipeInfo.summary }}
-            ></p>
+            ></motion.p>
           </TabPanel>
           <TabPanel>
-            <ul className="ingredients">{ingredient}</ul>
+            <motion.ul
+              className="ingredients"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            >
+              {ingredient}
+            </motion.ul>
           </TabPanel>
           <TabPanel>
-            <p
+            <motion.p
               className="instructions"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
               dangerouslySetInnerHTML={{ __html: recipeInfo.instructions }}
-            ></p>
+            ></motion.p>
           </TabPanel>
         </Tabs>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

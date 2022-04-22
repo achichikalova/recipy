@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Category from "../components/Category";
 import RecipePreview from "../components/RecipePreview";
+import { motion } from "framer-motion";
 
 const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
@@ -38,10 +39,14 @@ const Cuisine = () => {
   });
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+    >
       <Category />
       <div className="cuisine-container">{cuisine}</div>);
-    </div>
+    </motion.div>
   );
 };
 

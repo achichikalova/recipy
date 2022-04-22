@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Category from "../components/Category";
 import RecipePreview from "../components/RecipePreview";
 import "./All.scss";
+import { motion } from "framer-motion";
 
 const All = () => {
   const [all, setAll] = useState([]);
@@ -35,10 +36,15 @@ const All = () => {
   });
 
   return (
-    <div className="all-recipe-container">
+    <motion.div
+      className="all-recipe-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+    >
       <Category />
       <div className="all-recipe">{allRecipe}</div>
-    </div>
+    </motion.div>
   );
 };
 

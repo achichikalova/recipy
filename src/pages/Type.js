@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipePreview from "../components/RecipePreview";
 import "./Type.scss";
+import { motion } from "framer-motion";
 
 const Type = () => {
   const [recipes, setRecipes] = useState([]);
@@ -37,7 +38,16 @@ const Type = () => {
     return <RecipePreview key={recipe.id} recipe={recipe} />;
   });
 
-  return <div className="recipe-type">{recipeType}</div>;
+  return (
+    <motion.div
+      className="recipe-type"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+    >
+      {recipeType}
+    </motion.div>
+  );
 };
 
 export default Type;
