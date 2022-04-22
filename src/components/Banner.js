@@ -12,15 +12,22 @@ const Banner = () => {
   }, []);
 
   const getRecipe = async () => {
-    const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=1`;
-    await axios
-      .get(URL)
-      .then((res) => {
-        setRecipe(res.data.recipes[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const checkBanner = localStorage.getItem("banner");
+
+    if (checkBanner) {
+      setRecipe(JSON.parse(checkBanner));
+    } else {
+      const URL = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=1`;
+      await axios
+        .get(URL)
+        .then((res) => {
+          localStorage.setItem("banner", JSON.stringify(res.data.recipes[0]));
+          setRecipe(res.data.recipes[0]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
