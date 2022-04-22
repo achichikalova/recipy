@@ -16,7 +16,7 @@ const Recipe = () => {
   const params = useParams();
 
   const getRecipeInfo = async (id) => {
-    const URL = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`;
+    const URL = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY_SECOND}`;
     await axios
       .get(URL)
       .then((res) => {

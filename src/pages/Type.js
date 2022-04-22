@@ -17,7 +17,7 @@ const Type = () => {
   const getRecipes = async (type) => {
     const checkType = localStorage.getItem(`${type}`);
 
-    const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&type=${type}&number=9`;
+    const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY_SECOND}&type=${type}&number=9`;
 
     if (checkType) {
       setRecipes(JSON.parse(checkType));
