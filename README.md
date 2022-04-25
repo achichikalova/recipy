@@ -6,6 +6,8 @@
 
 <br>
 
+# Demo: [Recipy App Demo](https://recipy-app-react.web.app/)
+
 # Tech Stack
 
 - React.js
