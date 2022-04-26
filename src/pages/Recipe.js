@@ -9,11 +9,15 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { motion } from "framer-motion";
 
-const Recipe = () => {
+const Recipe = ({ setError }) => {
   const [recipeInfo, setRecipeInfo] = useState({});
   const [ingredients, setIngredients] = useState([]);
 
   const params = useParams();
+
+  useEffect(() => {
+    getRecipeInfo(params.id);
+  }, [params.id]);
 
   const getRecipeInfo = async (id) => {
     const URL = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY_SECOND}`;
@@ -23,14 +27,13 @@ const Recipe = () => {
         setRecipeInfo(res.data);
         setIngredients(res.data.extendedIngredients);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 402 || error.response.status === 429) {
+          setError(true);
+        }
       });
   };
-
-  useEffect(() => {
-    getRecipeInfo(params.id);
-  }, [params.id]);
 
   const ingredient = ingredients.map((ingredient) => {
     return <li key={ingredient.id}>{ingredient.original}</li>;

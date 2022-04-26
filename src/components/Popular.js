@@ -3,7 +3,7 @@ import "./Popular.scss";
 import { Link } from "react-router-dom";
 const axios = require("axios");
 
-const Popular = () => {
+const Popular = ({ setError }) => {
   const [popular, setPopular] = useState([]);
 
   useEffect(() => {
@@ -25,6 +25,9 @@ const Popular = () => {
         })
         .catch((error) => {
           console.error(error);
+          if (error.response.status === 402 || error.response.status === 429) {
+            setError(true);
+          }
         });
     }
   };

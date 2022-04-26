@@ -4,7 +4,7 @@ import "./Banner.scss";
 import { motion } from "framer-motion";
 const axios = require("axios");
 
-const Banner = () => {
+const Banner = ({ setError }) => {
   const [recipe, setRecipe] = useState();
 
   useEffect(() => {
@@ -26,6 +26,9 @@ const Banner = () => {
         })
         .catch((error) => {
           console.log(error);
+          if (error.response.status === 402 || error.response.status === 429) {
+            setError(true);
+          }
         });
     }
   };

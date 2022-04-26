@@ -5,7 +5,7 @@ import RecipePreview from "../components/RecipePreview";
 import "./Type.scss";
 import { motion } from "framer-motion";
 
-const Type = () => {
+const Type = ({ setError }) => {
   const [recipes, setRecipes] = useState([]);
 
   let params = useParams();
@@ -30,6 +30,9 @@ const Type = () => {
         })
         .catch((error) => {
           console.error(error);
+          if (error.response.status === 402 || error.response.status === 429) {
+            setError(true);
+          }
         });
     }
   };

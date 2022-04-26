@@ -5,7 +5,7 @@ import RecipePreview from "../components/RecipePreview";
 import "./All.scss";
 import { motion } from "framer-motion";
 
-const All = () => {
+const All = ({ setError }) => {
   const [all, setAll] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,9 @@ const All = () => {
         })
         .catch((error) => {
           console.error(error);
+          if (error.response.status === 402 || error.response.status === 429) {
+            setError(true);
+          }
         });
     }
   };

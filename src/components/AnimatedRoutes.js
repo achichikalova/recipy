@@ -8,18 +8,21 @@ import Recipe from "../pages/Recipe";
 import Type from "../pages/Type";
 import { AnimatePresence } from "framer-motion";
 
-const AnimatedRoutes = () => {
+const AnimatedRoutes = ({ setError }) => {
   const location = useLocation();
 
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home setError={setError} />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/all" element={<All />} />
-        <Route path="/:type" element={<Type />} />
-        <Route path="/cuisine/:type" element={<Cuisine />} />
-        <Route path="/recipe/:id" element={<Recipe />} />
+        <Route path="/all" element={<All setError={setError} />} />
+        <Route path="/:type" element={<Type setError={setError} />} />
+        <Route
+          path="/cuisine/:type"
+          element={<Cuisine setError={setError} />}
+        />
+        <Route path="/recipe/:id" element={<Recipe setError={setError} />} />
       </Routes>
     </AnimatePresence>
   );

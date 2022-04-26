@@ -6,7 +6,7 @@ import Category from "../components/Category";
 import RecipePreview from "../components/RecipePreview";
 import { motion } from "framer-motion";
 
-const Cuisine = () => {
+const Cuisine = ({ setError }) => {
   const [cuisines, setCuisines] = useState([]);
   let params = useParams();
 
@@ -18,7 +18,6 @@ const Cuisine = () => {
     const checkCuisine = localStorage.getItem(`${type}`);
 
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY_THIRD}&cuisine=${type}&number=8`;
-    console.log(URL);
 
     if (checkCuisine) {
       setCuisines(JSON.parse(checkCuisine));
@@ -31,6 +30,9 @@ const Cuisine = () => {
         })
         .catch((error) => {
           console.error(error);
+          if (error.response.status === 402 || error.response.status === 429) {
+            setError(true);
+          }
         });
     }
   };
