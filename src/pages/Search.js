@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Category from "../components/Category";
 import "./Search.scss";
 import { FaSearch } from "react-icons/fa";
@@ -17,6 +17,15 @@ const Search = () => {
     getSearched(input);
     setInput("");
   };
+
+  useEffect(() => {
+    if (input) {
+      setError((prevState) => ({
+        ...prevState,
+        search: false,
+      }));
+    }
+  }, [input]);
 
   const getSearched = async (query) => {
     const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY_SECOND}&number=3&query=${query}`;
@@ -74,10 +83,7 @@ const Search = () => {
       >
         {searchedRecipe}
         {error.search && (
-          <h3>
-            Nothing was found for your search - <span>${input}</span>, try
-            again...
-          </h3>
+          <h3>Nothing was found for your search, try again...</h3>
         )}
       </motion.div>
       {error.fetch && (
