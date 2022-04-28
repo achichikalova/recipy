@@ -22,6 +22,7 @@ const Popular = ({ setError }) => {
         .then((res) => {
           localStorage.setItem("popular", JSON.stringify(res.data.recipes));
           setPopular(res.data.recipes);
+          setError(false);
         })
         .catch((error) => {
           console.error(error);

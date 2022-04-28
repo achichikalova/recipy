@@ -4,7 +4,7 @@ import Popular from "../components/Popular";
 import "./Home.scss";
 import { motion } from "framer-motion";
 
-const Home = ({ setError }) => {
+const Home = () => {
   return (
     <motion.div
       className="home"
@@ -12,8 +12,8 @@ const Home = ({ setError }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.1 } }}
     >
-      <Banner setError={setError} />
-      <Popular setError={setError} />
+      <Banner />
+      <Popular />
     </motion.div>
   );
 };

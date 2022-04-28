@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Search = () => {
   const [input, setInput] = useState("");
   const [searchedRecipes, setSearchedRecipes] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState({ search: false, fetch: false });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,16 +26,21 @@ const Search = () => {
       .then((res) => {
         if (res.data.totalResults > 0) {
           setSearchedRecipes(res.data.results);
-          setError("");
+          setError((prevState) => ({
+            ...prevState,
+            search: false,
+            fetch: false,
+          }));
         } else {
-          setError(
-            `Nothing was found for your search - <span>${input}</span>, try again...`
-          );
+          setError((prevState) => ({ ...prevState, search: true }));
           setSearchedRecipes([]);
         }
       })
       .catch((err) => {
         console.error(err);
+        if (error.response.status === 402) {
+          setError((prevState) => ({ ...prevState, fetch: true }));
+        }
       });
   };
 
@@ -68,8 +73,14 @@ const Search = () => {
         exit={{ opacity: 0, transition: { duration: 0.1 } }}
       >
         {searchedRecipe}
+        {error.search && (
+          <h3>
+            Nothing was found for your search - <span>${input}</span>, try
+            again...
+          </h3>
+        )}
       </motion.div>
-      {error && (
+      {error.fetch && (
         <h2 className="error" dangerouslySetInnerHTML={{ __html: error }}></h2>
       )}
     </motion.div>

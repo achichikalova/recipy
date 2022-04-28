@@ -5,9 +5,12 @@ import { useParams } from "react-router-dom";
 import Category from "../components/Category";
 import RecipePreview from "../components/RecipePreview";
 import { motion } from "framer-motion";
+import Error from "../components/Error";
 
-const Cuisine = ({ setError }) => {
+const Cuisine = () => {
   const [cuisines, setCuisines] = useState([]);
+  const [error, setError] = useState(false);
+
   let params = useParams();
 
   useEffect(() => {
@@ -27,10 +30,11 @@ const Cuisine = ({ setError }) => {
         .then((res) => {
           localStorage.setItem(`${type}`, JSON.stringify(res.data.results));
           setCuisines(res.data.results);
+          setError(false);
         })
         .catch((error) => {
           console.error(error);
-          if (error.response.status === 402 || error.response.status === 429) {
+          if (error.response.status === 402) {
             setError(true);
           }
         });
@@ -49,6 +53,7 @@ const Cuisine = ({ setError }) => {
     >
       <Category />
       <div className="cuisine-container">{cuisine}</div>);
+      {error && <Error error={error} />}
     </motion.div>
   );
 };

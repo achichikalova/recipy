@@ -4,9 +4,11 @@ import { useParams } from "react-router-dom";
 import RecipePreview from "../components/RecipePreview";
 import "./Type.scss";
 import { motion } from "framer-motion";
+import Error from "../components/Error";
 
-const Type = ({ setError }) => {
+const Type = () => {
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(false);
 
   let params = useParams();
 
@@ -27,10 +29,11 @@ const Type = ({ setError }) => {
         .then((res) => {
           localStorage.setItem(`${type}`, JSON.stringify(res.data.results));
           setRecipes(res.data.results);
+          setError(false);
         })
         .catch((error) => {
           console.error(error);
-          if (error.response.status === 402 || error.response.status === 429) {
+          if (error.response.status === 402) {
             setError(true);
           }
         });
@@ -48,6 +51,7 @@ const Type = ({ setError }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.1 } }}
     >
+      {error && <Error error={error} />}
       {recipeType}
     </motion.div>
   );

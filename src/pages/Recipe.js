@@ -8,10 +8,12 @@ import { WiTime5 } from "react-icons/wi";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { motion } from "framer-motion";
+import Error from "../components/Error";
 
-const Recipe = ({ setError }) => {
+const Recipe = () => {
   const [recipeInfo, setRecipeInfo] = useState({});
   const [ingredients, setIngredients] = useState([]);
+  const [error, setError] = useState(false);
 
   const params = useParams();
 
@@ -26,10 +28,11 @@ const Recipe = ({ setError }) => {
       .then((res) => {
         setRecipeInfo(res.data);
         setIngredients(res.data.extendedIngredients);
+        setError(false);
       })
       .catch((error) => {
         console.log(error);
-        if (error.response.status === 402 || error.response.status === 429) {
+        if (error.response.status === 402) {
           setError(true);
         }
       });
@@ -46,6 +49,7 @@ const Recipe = ({ setError }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.1 } }}
     >
+      {error && <Error error={error} />}
       <h1>{recipeInfo?.title}</h1>
       <div className="recipe-meta">
         <div className="meta">

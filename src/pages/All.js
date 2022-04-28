@@ -4,9 +4,11 @@ import Category from "../components/Category";
 import RecipePreview from "../components/RecipePreview";
 import "./All.scss";
 import { motion } from "framer-motion";
+import Error from "../components/Error";
 
-const All = ({ setError }) => {
+const All = () => {
   const [all, setAll] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getAll();
@@ -24,10 +26,11 @@ const All = ({ setError }) => {
         .then((res) => {
           localStorage.setItem("all", JSON.stringify(res.data.recipes));
           setAll(res.data.recipes);
+          setError(false);
         })
         .catch((error) => {
           console.error(error);
-          if (error.response.status === 402 || error.response.status === 429) {
+          if (error.response.status === 402) {
             setError(true);
           }
         });
@@ -47,6 +50,7 @@ const All = ({ setError }) => {
     >
       <Category />
       <div className="all-recipe">{allRecipe}</div>
+      {error && <Error error={error} />}
     </motion.div>
   );
 };

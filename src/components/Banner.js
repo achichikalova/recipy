@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Banner.scss";
 import { motion } from "framer-motion";
+
 const axios = require("axios");
 
-const Banner = ({ setError }) => {
+const Banner = () => {
   const [recipe, setRecipe] = useState();
 
   useEffect(() => {
@@ -26,9 +27,6 @@ const Banner = ({ setError }) => {
         })
         .catch((error) => {
           console.log(error);
-          if (error.response.status === 402 || error.response.status === 429) {
-            setError(true);
-          }
         });
     }
   };
