@@ -6,7 +6,6 @@ import {
   GiNoodles,
   GiHamburger,
   GiSushis,
-  GiTacos,
   GiChiliPepper,
 } from "react-icons/gi";
 import { MdOutlineRamenDining } from "react-icons/md";
@@ -42,13 +41,6 @@ const Category = () => {
       >
         <GiSushis />
         <h3>Japanese</h3>
-      </NavLink>
-      <NavLink
-        className={(navData) => (navData.isActive ? "active link" : "link")}
-        to={"/cuisine/mexican"}
-      >
-        <GiTacos />
-        <h3>Mexican</h3>
       </NavLink>
       <NavLink
         className={(navData) => (navData.isActive ? "active link" : "link")}
